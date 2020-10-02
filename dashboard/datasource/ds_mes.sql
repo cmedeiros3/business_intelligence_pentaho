@@ -1,0 +1,1 @@
+select distinct mes from DIM_DATA

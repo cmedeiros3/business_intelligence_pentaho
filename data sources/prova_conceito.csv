@@ -1,0 +1,4 @@
+id_vendas_supermercados;supermercado;grupo_produto;subgrupo_produto;id_produto;nome_produto;marca_produto;peso_produto;medida_produto;sku_produto;custo_unitario;preco_venda;quantidade;total_venda;lucro_venda;margem_venda;data_venda;
+60;GAMA;ARROZ;BRANCO;10;ARROZ BRANCO A 5KG;AMARELA;1;KG;ALI468080;8;10;1;10;2;0,2;2019-05-03;
+61;GAMA;ARROZ;BRANCO;10;ARROZ BRANCO A 5KG;AMARELA;1;KG;ALI468080;8;10;1;10;2;0,2;2019-05-03;
+62;GAMA;ARROZ;BRANCO;10;ARROZ BRANCO A 5KG;AMARELA;1;KG;ALI468080;8;10;1;10;2;0,2;2019-05-03;

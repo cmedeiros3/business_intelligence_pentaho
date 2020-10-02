@@ -1,0 +1,80 @@
+<Schema name="Schema_DWSupermercados">
+	<Cube name="Rede_Supermercados" cache="false" enabled="true">
+		<Table name="tb_fato" schema="public">
+		</Table>
+		<Dimension type="StandardDimension" foreignKey="fk_produto" name="Produtos">
+			<Hierarchy name="Grupos" hasAll="true" allMemberName="Todos os Grupos" primaryKey="pk_produto">
+				<Table name="dim_produtos" schema="public">
+				</Table>
+				<Level name="Grupo" column="grupo_produto" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+				</Level>
+				<Level name="Subgrupo" column="subgrupo_produto" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+				</Level>
+				<Level name="Nome" column="nome_produto" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+				</Level>
+				<Level name="SKU" column="sku_produto" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+				</Level>
+			</Hierarchy>
+			<Hierarchy name="Marcas" hasAll="true" allMemberName="Todas as Marcas" primaryKey="pk_produto">
+				<Table name="dim_produtos" schema="public">
+				</Table>
+				<Level name="Marca" column="marca_produto" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+				</Level>
+				<Level name="Nome" column="nome_produto" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+				</Level>
+				<Level name="SKU" column="sku_produto" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+				</Level>
+			</Hierarchy>
+		</Dimension>
+		<Dimension type="TimeDimension" foreignKey="fk_data" name="Time">
+			<Hierarchy name="Ano" hasAll="true" primaryKey="pk_data">
+				<Table name="dim_data" schema="public">
+				</Table>
+				<Level name="Ano" column="ano" type="Integer" uniqueMembers="false" levelType="TimeYears" hideMemberIf="Never">
+				</Level>
+				<Level name="Mes" column="mes" type="Integer" uniqueMembers="false" levelType="TimeMonths" hideMemberIf="Never">
+				</Level>
+				<Level name="Dia" column="dia" type="Integer" uniqueMembers="false" levelType="TimeDays" hideMemberIf="Never">
+				</Level>
+			</Hierarchy>
+			<Hierarchy name="Mes" hasAll="true" primaryKey="pk_data">
+				<Table name="dim_data" schema="public">
+				</Table>
+				<Level name="Ano" column="ano" type="String" uniqueMembers="false" levelType="TimeYears" hideMemberIf="Never">
+				</Level>
+				<Level name="Mes" column="mes" type="Integer" uniqueMembers="false" levelType="TimeMonths" hideMemberIf="Never">
+				</Level>
+				<Level name="Dia" column="dia" type="Integer" uniqueMembers="false" levelType="TimeDays" hideMemberIf="Never">
+				</Level>
+			</Hierarchy>
+			<Hierarchy name="Dia" hasAll="true" primaryKey="pk_data">
+				<Table name="dim_data" schema="public">
+				</Table>
+				<Level name="Ano" column="ano" type="Integer" uniqueMembers="false" levelType="TimeYears" hideMemberIf="Never">
+				</Level>
+				<Level name="Mes" column="mes" type="Integer" uniqueMembers="false" levelType="TimeMonths" hideMemberIf="Never">
+				</Level>
+				<Level name="Dia" column="dia" type="Integer" uniqueMembers="false" levelType="TimeDays" hideMemberIf="Never">
+				</Level>
+			</Hierarchy>
+		</Dimension>
+		<Dimension type="StandardDimension" foreignKey="fk_supermercado" name="Supermercados">
+			<Hierarchy hasAll="true" primaryKey="pk_supermercado">
+				<Table name="dim_supermercados" schema="public">
+				</Table>
+				<Level name="Supermercado" column="supermercado" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+				</Level>
+			</Hierarchy>
+		</Dimension>
+		<Measure name="Vendas" column="preco_venda" datatype="Numeric" aggregator="sum" visible="true">
+		</Measure>
+		<Measure name="Lucro" column="lucro_venda" datatype="Numeric" aggregator="sum" visible="true">
+		</Measure>
+		<Measure name="Quantidade" column="quantidade" datatype="Numeric" aggregator="sum" visible="true">
+		</Measure>
+		<Measure name="CustoUnitario" column="custo_unitario" datatype="Numeric" aggregator="sum" visible="true">
+		</Measure>
+		<Measure name="Margem" column="margem_venda" datatype="Numeric" aggregator="sum" visible="true">
+		</Measure>
+	</Cube>
+</Schema>

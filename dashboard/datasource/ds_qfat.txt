@@ -1,0 +1,7 @@
+WITH
+SET [~ROWS] AS
+    {[Supermercados].[${param_supermercado}]}
+SELECT
+NON EMPTY {[Measures].[Vendas]} ON COLUMNS,
+NON EMPTY [~ROWS] ON ROWS
+FROM [Supermercados1]

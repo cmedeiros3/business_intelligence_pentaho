@@ -1,0 +1,11 @@
+WITH
+SET [~COLUMNS_Time_Time.Ano] AS
+    {[Time.Ano].[Ano].[${param_ano_inicial}]:[Time].[Time.Ano].[${param_ano_final}]}
+SET [~COLUMNS_Supermercados_Supermercados] AS
+    {[Supermercados].[Supermercado].[${param_supermercado}]}
+SET [~ROWS] AS
+    {[Produtos.Grupos].[Subgrupo].[${param_subgrupo_produto}]}
+SELECT
+NON EMPTY CrossJoin(NonEmptyCrossJoin([~COLUMNS_Time_Time.Ano], [~COLUMNS_Supermercados_Supermercados]), {[Measures].[CustoUnitario]}) ON COLUMNS,
+NON EMPTY [~ROWS] ON ROWS
+FROM [Supermercados1]
